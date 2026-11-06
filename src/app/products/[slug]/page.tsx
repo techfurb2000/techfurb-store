@@ -8,6 +8,9 @@ import { Badge } from "@/components/ui/badge"
 import { ShieldCheck } from "lucide-react"
 import { AddToCartButton } from "@/components/store/AddToCartButton"
 
+export const dynamic = "force-dynamic"
+export const revalidate = 0
+
 type Props = {
   params: Promise<{ slug: string }>
 }

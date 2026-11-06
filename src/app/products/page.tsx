@@ -5,6 +5,9 @@ import { ProductCardCarousel } from "@/components/products/ProductCardCarousel"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
+export const dynamic = "force-dynamic"
+export const revalidate = 0
+
 export default async function ProductsPage() {
   const products = await getActiveProducts()
 

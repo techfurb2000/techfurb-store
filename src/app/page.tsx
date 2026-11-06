@@ -6,6 +6,9 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ShieldCheck, Truck, RefreshCcw, ThumbsUp } from "lucide-react"
 
+export const dynamic = "force-dynamic"
+export const revalidate = 0
+
 export default async function Home() {
   const featuredProducts = await getFeaturedProducts()
 

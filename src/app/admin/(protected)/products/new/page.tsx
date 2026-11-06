@@ -27,6 +27,7 @@ export default function AddProductPage() {
     ram: "",
     storage: "",
     images: [] as string[],
+    is_featured: false,
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -57,7 +58,7 @@ export default function AddProductPage() {
       images: formData.images,
       warranty_months: 6,
       is_active: true,
-      is_featured: false,
+      is_featured: formData.is_featured,
     })
 
     setIsSubmitting(false)
@@ -137,6 +138,16 @@ export default function AddProductPage() {
                   <Input type="number" name="original_price" value={formData.original_price} onChange={handleChange} />
                 </div>
               </div>
+              <label className="flex items-center gap-2 cursor-pointer pt-2">
+                <input
+                  type="checkbox"
+                  name="is_featured"
+                  checked={formData.is_featured}
+                  onChange={(e) => setFormData({ ...formData, is_featured: e.target.checked })}
+                  className="h-4 w-4 rounded accent-[var(--accent)]"
+                />
+                <span className="text-sm font-medium text-[var(--text-primary)]">Feature this product on Homepage (Best Deals)</span>
+              </label>
             </CardContent>
           </Card>
 

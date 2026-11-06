@@ -29,6 +29,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
     ram: "",
     storage: "",
     images: [] as string[],
+    is_featured: false,
   })
 
   useEffect(() => {
@@ -55,6 +56,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
           ram: data.specs?.ram || "",
           storage: data.specs?.storage || "",
           images: data.images || [],
+          is_featured: data.is_featured ?? false,
         })
       } else {
         alert("Product not found.")
@@ -92,6 +94,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
       description: formData.description,
       specs: specs,
       images: formData.images,
+      is_featured: formData.is_featured,
       warranty_months: 6,
     })
 
@@ -176,6 +179,16 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
                   <Input type="number" name="original_price" value={formData.original_price} onChange={handleChange} />
                 </div>
               </div>
+              <label className="flex items-center gap-2 cursor-pointer pt-2">
+                <input
+                  type="checkbox"
+                  name="is_featured"
+                  checked={formData.is_featured}
+                  onChange={(e) => setFormData({ ...formData, is_featured: e.target.checked })}
+                  className="h-4 w-4 rounded accent-[var(--accent)]"
+                />
+                <span className="text-sm font-medium text-[var(--text-primary)]">Feature this product on Homepage (Best Deals)</span>
+              </label>
             </CardContent>
           </Card>
 

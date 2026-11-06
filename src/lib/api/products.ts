@@ -51,6 +51,22 @@ export async function getFeaturedProducts() {
     return []
   }
 
+  // Fallback: If no products are explicitly marked featured, show latest active products
+  if (!data || data.length === 0) {
+    const { data: latestData, error: latestError } = await supabase
+      .from("products")
+      .select("*")
+      .eq("is_active", true)
+      .order("created_at", { ascending: false })
+      .limit(4)
+
+    if (latestError) {
+      console.error("Error fetching latest fallback products:", latestError)
+      return []
+    }
+    return (latestData || []) as Product[]
+  }
+
   return data as Product[]
 }
 
