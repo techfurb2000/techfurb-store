@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ShieldCheck, Truck, RefreshCcw, ThumbsUp } from "lucide-react"
-import AdBanner from "@/components/ads/AdBanner"
 
 export default async function Home() {
   const featuredProducts = await getFeaturedProducts()
@@ -65,15 +64,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Mid-page AdSense Banner */}
-      <section className="container mx-auto px-4 md:px-8">
-        <AdBanner 
-          dataAdSlot="1234567890" 
-          dataAdFormat="auto" 
-          dataFullWidthResponsive={true} 
-        />
-      </section>
-
       {/* Featured Products */}
       <section className="container mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between mb-8">
@@ -92,8 +82,8 @@ export default async function Home() {
                 <Card className="h-full overflow-hidden hover:border-[var(--accent)] transition-colors duration-300 group">
                   <div className="relative aspect-[4/3] bg-white overflow-hidden">
                     {product.images?.[0] ? (
-                      <Image 
-                        src={product.images[0]} 
+                      <Image
+                        src={product.images[0]}
                         alt={product.name}
                         fill
                         className="object-contain group-hover:scale-105 transition-transform duration-300"

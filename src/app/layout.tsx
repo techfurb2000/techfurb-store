@@ -4,7 +4,6 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import AdSense from "@/components/ads/AdSense";
-import AdBanner from "@/components/ads/AdBanner";
 import { GoogleAnalytics } from "@next/third-parties/google";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,15 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         
-        {/* Ad below main content, before footer */}
-        <div className="container mx-auto px-4 my-8">
-          <AdBanner 
-            dataAdSlot="8765432109" 
-            dataAdFormat="auto" 
-            dataFullWidthResponsive={true} 
-          />
-        </div>
-        
+
         <Footer />
         <AdSense pId={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID || ""} />
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && (
